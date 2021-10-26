@@ -1,14 +1,21 @@
 import React from 'react';
 import tw from 'twin.macro';
+import HomePage from './containers/HomePage';
 
 const Wrapper = tw.div`
-  flex
   w-full
-  bg-blue-300
+  flex
+  flex-col
+  bg-gray-100
+  h-full
 `
 
-
-
-const App = (): JSX.Element => (<Wrapper>Test</Wrapper>)
+const App = (): JSX.Element => {
+  return (
+    <Wrapper>
+      <HomePage />
+    </Wrapper>
+  )
+}
 
 export default App;
