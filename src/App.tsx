@@ -7,7 +7,6 @@ const Wrapper = tw.div`
   flex
   flex-col
   bg-gray-100
-  h-full
 `
 
 const App = (): JSX.Element => {

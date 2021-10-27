@@ -16,6 +16,11 @@ const NavItem = tw.li`
   border-r
   border-black
   first:border-l
+  cursor-pointer
+  hover:bg-black
+  hover:text-white
+  transition
+  duration-500
 `
 
 

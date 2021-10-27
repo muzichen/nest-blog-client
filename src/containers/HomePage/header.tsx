@@ -5,7 +5,6 @@ const HeaderContainer = tw.div`
   flex
   flex-col
   w-full
-  h-80
   items-center
 `
 

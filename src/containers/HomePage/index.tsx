@@ -1,5 +1,5 @@
 import tw from "twin.macro";
-import Door from "./door";
+import Articles from "./articles";
 import Header from "./header";
 
 const HomePageContainer = tw.div`
@@ -12,7 +12,8 @@ const HomePage = (): JSX.Element => {
   return (
     <HomePageContainer>
       <Header />
-      <Door />
+      {/* <Door /> */}
+      <Articles />
     </HomePageContainer>
   )
 }
