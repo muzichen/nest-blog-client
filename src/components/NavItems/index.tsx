@@ -23,8 +23,6 @@ const NavItem = tw.li`
   duration-500
 `
 
-
-
 const NavItems = (): JSX.Element => {
   return <NavItemsContainer>
     <NavItem>fafas</NavItem>
