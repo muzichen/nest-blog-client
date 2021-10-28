@@ -41,6 +41,7 @@ const ArticleTitle = tw.h1`
   py-6
   text-xl
   font-bold
+  cursor-pointer
 `
 
 const ArticleSummary = tw.p`
