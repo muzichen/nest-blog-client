@@ -1,5 +1,6 @@
 import { RouteComponentProps } from "@reach/router";
 import tw from "twin.macro";
+import Contact from "../../components/Contact";
 import Marginer from "../../components/Marginer";
 import RelatedArticles from "../../components/RelatedArticles";
 
@@ -55,6 +56,7 @@ const ArticleDetail = (props: RouteComponentProps): JSX.Element => {
         <ArticleThumbnail />
         <RelatedArticles />
       </ArticleDetailWrapper>
+      <Contact />
   </ArticleDetailContainer>
 }
 

@@ -52,7 +52,8 @@ const RelatedArticleTitle = tw.h2`
   h-16
   font-bold
   text-base
-  py-3
+  py-6
+  px-3
 `
 
 const RelatedArticles = (): JSX.Element => {

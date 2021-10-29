@@ -1,8 +1,7 @@
 import { RouteComponentProps } from "@reach/router";
 import tw from "twin.macro";
-import Marginer from "../../components/Marginer";
+import Contact from "../../components/Contact";
 import Articles from "./articles";
-import Contact from "./contact";
 
 const HomePageContainer = tw.div`
   w-full
@@ -15,7 +14,6 @@ const HomePage = (props: RouteComponentProps): JSX.Element => {
   return (
     <HomePageContainer>
       <Articles />
-      <Marginer direction="vertical" margin={100} />
       <Contact />
     </HomePageContainer>
   )
