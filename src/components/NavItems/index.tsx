@@ -1,3 +1,4 @@
+import { Link } from "@reach/router";
 import tw from "twin.macro";
 
 const NavItemsContainer = tw.ul`
@@ -25,10 +26,14 @@ const NavItem = tw.li`
 
 const NavItems = (): JSX.Element => {
   return <NavItemsContainer>
-    <NavItem>fafas</NavItem>
-    <NavItem>fafas</NavItem>
-    <NavItem>fafas</NavItem>
-    <NavItem>fafas</NavItem>
+    <NavItem>
+      <Link to="/">主页</Link>
+    </NavItem>
+    <NavItem>
+      <Link to="/about">关于</Link>
+    </NavItem>
+    <NavItem>留言</NavItem>
+    {/* <NavItem>fafas</NavItem> */}
   </NavItemsContainer>
 }
 
