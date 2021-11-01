@@ -18,7 +18,7 @@ const MainWrapper = tw.div`
 const App = (): JSX.Element => {
   return (
     <Wrapper>
-      <Header />
+          <Header />
       <MainWrapper>
         <Router>
           <HomePage path="/" />
