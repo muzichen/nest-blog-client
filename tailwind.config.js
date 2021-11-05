@@ -4,6 +4,7 @@ module.exports = {
     './public/index.html'
   ],
   darkMode: 'media', // or 'media' or 'class'
+  margin: ['response', 'first'],
   theme: {
     extend: {},
   },

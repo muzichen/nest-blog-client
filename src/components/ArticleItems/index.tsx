@@ -2,6 +2,11 @@ import styled from "styled-components";
 import tw from "twin.macro";
 import { HeartIcon } from '@heroicons/react/outline';
 import Marginer from "../Marginer";
+import { Post } from "../../models";
+
+interface ArticleProps {
+  article: Post
+}
 
 const ArticleItemsContainer = tw.li`
   w-full
@@ -77,7 +82,7 @@ const ArticleLikes = styled.span`
   `}
 `
 
-const ArticleItems = (): JSX.Element => {
+const ArticleItems = ({ article }: ArticleProps): JSX.Element => {
   return <ArticleItemsContainer>
     <ArticlesItemsBox>
       <Image>
@@ -89,7 +94,7 @@ const ArticleItems = (): JSX.Element => {
         a day ago . 1min
       </ArticleTime>
       <ArticleTitle>
-      这是文章标题这是文章标题这是
+        {article.title}
       </ArticleTitle>
       <ArticleSummary>
         Create a blog post subtitle that summarizes your post in a few short, punchy sentences and
