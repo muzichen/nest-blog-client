@@ -21,6 +21,7 @@ const ContactWrapper = tw.div`
   text-center
   flex
   flex-col
+  items-center
 `;
 
 const ContactTitle = tw.h1`

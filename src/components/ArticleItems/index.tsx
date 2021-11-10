@@ -3,7 +3,13 @@ import tw from "twin.macro";
 import { HeartIcon } from '@heroicons/react/outline';
 import Marginer from "../Marginer";
 import { Post } from "../../models";
+import dayjs from "dayjs";
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/zh-cn';
+import { useNavigate } from "react-router";
 
+dayjs.extend(relativeTime);
+dayjs.locale('zh-cn');
 interface ArticleProps {
   article: Post
 }
@@ -83,6 +89,12 @@ const ArticleLikes = styled.span`
 `
 
 const ArticleItems = ({ article }: ArticleProps): JSX.Element => {
+  const navigate = useNavigate();
+
+  const viewArticle = (articleId: string) => {
+    navigate(`/article/${articleId}`);
+  }
+
   return <ArticleItemsContainer>
     <ArticlesItemsBox>
       <Image>
@@ -91,9 +103,9 @@ const ArticleItems = ({ article }: ArticleProps): JSX.Element => {
     </ArticlesItemsBox>
     <ArticlesItemsBox>
       <ArticleTime>
-        a day ago . 1min
+        {dayjs().from(article.createdAt)}
       </ArticleTime>
-      <ArticleTitle>
+      <ArticleTitle onClick={() => { viewArticle(article._id) }}>
         {article.title}
       </ArticleTitle>
       <ArticleSummary>
@@ -102,10 +114,10 @@ const ArticleItems = ({ article }: ArticleProps): JSX.Element => {
       </ArticleSummary>
       <Marginer direction="vertical" margin="80px" />
       <ArticleViews>
-        <span>0 views</span>
-        <span>0 comments</span>
+        <span>{article.views || 0} views</span>
+        <span>{article.commentsCount || 0} comments</span>
         <ArticleLikes>
-          2
+          {article.likes || 0}
           <HeartIcon className="h-3 w-3 text-red-500 ml-1" />
         </ArticleLikes>
       </ArticleViews>

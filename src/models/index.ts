@@ -4,10 +4,22 @@ export interface Author {
 }
 
 export interface Post {
+  _id: string;
   title: string;
   content: string;
   tags: string[];
+  views: number;
+  likes: number;
   author: Author;
-  created_at: string;
-  updated_at: string;
+  commentsCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Comment {
+  content: string;
+  path: string;
+  post: string;
+  createdAt: string;
+  author: Author;
 }

@@ -2,15 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../index";
 import * as postsHttp from "../../../http/posts";
 import { Post } from "../../../models";
+import AsyncBaseState from "../../asyncBaseState";
 
-interface PostsState {
+interface PostsState extends AsyncBaseState {
   posts: Post[];
-  status: "idle" | "loading" | "succssed" | "failed";
-  error: unknown;
+  post?: Post;
 }
 
 const initialState: PostsState = {
   posts: [],
+  post: undefined,
   status: "idle",
   error: null,
 };
@@ -18,6 +19,11 @@ const initialState: PostsState = {
 // createAsyncThunk 第一个参数是作为action type前缀使用的，当调用dispatch(fetchPosts())的时候，thunk会首先发送一个type为'posts/fetchPosts/pending'的action
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
   const { data } = await postsHttp.fetchPosts();
+  return data;
+});
+
+export const fetchPost = createAsyncThunk("posts/fetchPost", async (id: string) => {
+  const { data } = await postsHttp.fetchPost(id);
   return data;
 });
 
@@ -44,6 +50,14 @@ const postsSlice = createSlice({
     }).addCase(fetchPosts.rejected, (state, action) => {
       state.status = 'failed'
       state.error = action.error.message
+    }).addCase(fetchPost.pending, (state, action) => {
+      state.status = "loading";
+    }).addCase(fetchPost.fulfilled, (state, action) => {
+      state.status = 'succssed';
+      state.post = action.payload;
+    }).addCase(fetchPost.rejected, (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
     });
   },
 });
@@ -53,3 +67,5 @@ const postsSlice = createSlice({
 export default postsSlice;
 
 export const selectAllPosts = (state: RootState) => state.posts.posts;
+export const selectCurrentPost = (state: RootState) => state.posts.post;
+

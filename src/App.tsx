@@ -1,4 +1,4 @@
-import { Router } from '@reach/router';
+import { Routes, Route } from 'react-router-dom';
 import tw from 'twin.macro';
 import ArticleDetail from './containers/ArticleDetail';
 import HomePage from './containers/HomePage';
@@ -20,10 +20,10 @@ const App = (): JSX.Element => {
     <Wrapper>
       <Header />
       <MainWrapper>
-        <Router>
-          <HomePage path="/" />
-          <ArticleDetail path="/article/:id" />
-        </Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/article/:id" element={<ArticleDetail />} />
+        </Routes>
       </MainWrapper>
       {/* <HomePage /> */}
       {/* <ArticleDetail /> */}
