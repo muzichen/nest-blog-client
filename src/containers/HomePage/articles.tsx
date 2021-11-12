@@ -25,9 +25,12 @@ const Articles = (): JSX.Element => {
     const postsStatus = useAppSelector((state) => state.posts.status);
 
     useEffect(() => {
-        if (postsStatus === "idle") {
-            dispatch(fetchPosts());
-        }
+      if (postsStatus === 'idle') {
+        dispatch(fetchPosts({
+          pageSize: 3,
+          currentPage: 1
+        }));
+      }
     }, [dispatch, postsStatus]);
 
     if (postsStatus === "loading") return <h1>Loading...</h1>;

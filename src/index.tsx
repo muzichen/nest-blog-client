@@ -6,18 +6,30 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './stores';
 import { BrowserRouter } from 'react-router-dom';
+import manager from './websockets/manager';
 
+const AppBoot = async () => {
+ try {
+   const isRunning = await manager.setUp();
+   manager.emit('events');
+   if (isRunning) {
+    ReactDOM.render(
+      <React.StrictMode>
+        <BrowserRouter>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </BrowserRouter>
+      </React.StrictMode>,
+      document.getElementById('root')
+    );
+   }
+ } catch(err) {
+   console.error(err);
+ }
+}
 
-ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+AppBoot();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
